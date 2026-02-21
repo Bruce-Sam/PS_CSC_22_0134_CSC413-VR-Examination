@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CSC413 VR Examination Assignment</title>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
+  <script src="js/main.js"></script>
+</head>
+
+<body>
+  <a-scene shadow="type: pcfsoft">
+
+    <a-assets>
+      <a-asset-item id="roof" src="assets/models/roof.glb"></a-asset-item>
+      <a-asset-item id="door" src="assets/models/door.glb"></a-asset-item>
+      <a-asset-item id="tree" src="assets/models/tree.glb"></a-asset-item>
+      <a-asset-item id="fence" src="assets/models/fence.glb"></a-asset-item>
+      <a-asset-item id="pool" src="assets/models/pool.glb"></a-asset-item>
+      <a-asset-item id="car" src="assets/models/car.glb"></a-asset-item>
+      <a-asset-item id="dog" src="assets/models/dog.glb"></a-asset-item>
+      <a-asset-item id="bed" src="assets/models/bed.glb"></a-asset-item>
+      <a-asset-item id="couch" src="assets/models/couch.glb"></a-asset-item>
+      <a-asset-item id="desk" src="assets/models/desk.glb"></a-asset-item>
+      <a-asset-item id="drawer" src="assets/models/drawer.glb"></a-asset-item>
+      <a-asset-item id="wardrobe" src="assets/models/wardrobe.glb"></a-asset-item>
+      <a-asset-item id="bookcase" src="assets/models/bookcase.glb"></a-asset-item>
+      <a-asset-item id="alarm" src="assets/models/alarm.glb"></a-asset-item>
+      <a-asset-item id="cup" src="assets/models/cup.glb"></a-asset-item>
+      <a-asset-item id="Kitchen" src="assets/models/Kitchen.glb"></a-asset-item>
+      <a-asset-item id="dining" src="assets/models/dining.glb"></a-asset-item> 
+      <a-asset-item id="fridge" src="assets/models/fridge.glb"></a-asset-item> 
+      <a-asset-item id="washing" src="assets/models/washing.glb"></a-asset-item>    
+      <a-asset-item id="tv" src="assets/models/tv.glb"></a-asset-item>   
+      <a-asset-item id="ac" src="assets/models/ac.glb"></a-asset-item>    
+      <a-asset-item id="window" src="assets/models/window.glb"></a-asset-item>   
+      <a-asset-item id="light" src="assets/models/light.glb"></a-asset-item> 
+      <a-asset-item id="fan" src="assets/models/fan.glb"></a-asset-item>   
+      <a-asset-item id="bath" src="assets/models/bath.glb"></a-asset-item> 
+      <a-asset-item id="man" src="assets/models/Man.glb"></a-asset-item>  
+      
+      <img id="floorTex" src="assets/textures/floor.jpg">
+      <img id="ceilTex" src="assets/textures/ceil.jpg">
+      <img id="wallTex" src="assets/textures/wall.jpg">
+      <img id="grassTex" src="assets/textures/ground.jpg">
+      <img id="winTex" src="assets/textures/window.jpg">
+      <img id="watTex" src="assets/textures/wat.png">
+
+
+      <audio id="music" src="assets/sounds/music.mp3" preload="auto"></audio>
+      <audio id="water" src="assets/sounds/water.mp3" preload="auto"></audio>
+      <audio id="dogpant" src="assets/sounds/dogpant.mp3" preload="auto"></audio>
+  
+      <video id="movie-src" src="assets/sounds/vid.mp4" autoplay loop="true" crossorigin="anonymous" muted></video>
+
+    </a-assets> 
+
+    <a-entity id="loadingText"
+          text="value: Loading Villa...; align: center; width: 6"
+          position="0 2 -3">
+    </a-entity>
+
+    <a-entity id="rig" position="0 1.6 25">
+      <a-camera look-controls wasd-controls></a-camera>
+    </a-entity>
+
+
+    <a-light type="ambient" intensity="0.7"></a-light>
+    <a-light type="directional" position="-5 15 10" intensity="0.8" castShadow="true"></a-light>
+    <a-sky color="#87CEEB"></a-sky>
+
+    <a-plane position="0 -0.05 0" rotation="-90 0 0" width="300" height="200" src="#grassTex" repeat="5 5" ></a-plane>
+  
+    <a-entity id="pool-area" gltf-model="#pool" position="0 -2.5 -17" scale="0.2 0.5 0.5" rotation="0 -90 0">
+      <a-entity id="pool-audio" position="0 5 0" sound="src: #water; autoplay: false; loop: true; positional: true; refDistance: 4; rolloffFactor: 1; volume: 0.6"></a-entity>
+    </a-entity>
+    
+    <a-plane position="0 0.3 -17" rotation="-90 90 0" width="3" height="15" material="src: #watTex; repeat: 3 15; transparent: true; opacity: 0.7" water-flow="speedX: 0.1; speedY: 0.2"></a-plane>
+
+    <a-entity id="perimeter-fence">
+      <a-entity gltf-model="#fence" position="-20 0 25" scale="4 2 2"></a-entity>
+      <a-entity gltf-model="#fence" position="20 0 25 " scale="4 2 2"></a-entity>
+      <a-entity gltf-model="#fence" position="-20 0 -25" scale="4 2 2" rotation="0 180 0"></a-entity>
+      <a-entity gltf-model="#fence" position="3 0 -25" scale="4 2 2" rotation="0 180 0"></a-entity>
+      <a-entity gltf-model="#fence" position="23 0 -25" scale="3 2 2" rotation="0 180 0"></a-entity>
+      <a-entity gltf-model="#fence" position="32 0 11.6" scale="4.6 2 2" rotation="0 90 0"></a-entity>
+      <a-entity gltf-model="#fence" position="32 0 -13.5" scale="4 2 2" rotation="0 90 0"></a-entity>
+      <a-entity gltf-model="#fence" position="-32 0 11.6" scale="4.6 2 2" rotation="0 -90 0"></a-entity>
+      <a-entity gltf-model="#fence" position="-32 0 -13.5" scale="4 2 2" rotation="0 -90 0"></a-entity>
+    </a-entity>
+    
+    <a-entity id="landscaping">
+      <a-entity gltf-model="#tree" position="-25 0 -15"></a-entity>
+      <a-entity gltf-model="#tree" position="25 0 -20"></a-entity>
+      <a-entity gltf-model="#tree" position="-30 0 10"></a-entity>
+     
+    <a-entity id="moving-dog" 
+      position="17 0 20" 
+      rotation="0 180 0"
+      patrol
+      animation="property: position; from: 17 0 20; to: 17 0 -10; dur: 10000; easing: linear; loop: false">
+    
+      <a-entity gltf-model="#dog" 
+                scale="0.5 0.5 0.5" 
+                animation-mixer="clip: Walk">
+        <a-entity id="dog-audio" 
+                  sound="src: #dogpant; autoplay: true; loop: true; positional: true; refDistance: 2; volume: 3">
+        </a-entity>
+      </a-entity>
+    </a-entity>
+
+      <a-entity gltf-model="#car" position="-20 1.3 15" rotation="0 -85 0"></a-entity>
+    </a-entity>
+    
+
+    <a-plane rotation="-90 0 0" width="30" height="20" src="#floorTex" repeat="5 5"></a-plane>
+    <a-plane position="0 3.9 0" rotation="90 0 0" width="30" height="20" src="#ceilTex" repeat="5 5" side="double"></a-plane>
+    <a-entity gltf-model="#roof" position="0 4 0" scale="14.5 7 10"></a-entity>
+
+    <a-box position="-4 2 -10" width="22" height="4" depth="0.2" src="#wallTex"></a-box> 
+    <a-box position="12.5 2 -10" width="5" height="4" depth="0.2" src="#wallTex" ></a-box> 
+    <a-box position="-6 2 10" width="18" height="4" depth="0.2" src="#wallTex" ></a-box>
+    <a-box position="10.8 2 10" width="8.5" height="4" depth="0.2" src="#wallTex" ></a-box> 
+    <a-box position="-15 2 0" width="0.2" height="4" depth="20" src="#wallTex" ></a-box>
+    <a-box position="15 2 0" width="0.2" height="4" depth="20" src="#wallTex" ></a-box>
+
+    <a-box position="-15 2.5 7.5" width="0.5" height="1.5" depth="3" src="#winTex" ></a-box>
+    <a-box position="-15 2.5 -7" width="0.5" height="1.5" depth="3" src="#winTex" ></a-box>
+    <a-box position="-15 2.5 -3" width="0.5" height="1.5" depth="3" src="#winTex" ></a-box>
+    <a-box position="10.8 2 10" width="3" height="1.5" depth="0.5" src="#winTex" ></a-box> 
+
+
+    <a-entity id="internal-walls">
+      <a-box position="-9.5 2 0" width="11" height="4" depth="0.1" src="#wallTex" ></a-box> 
+      <a-box position="0 2 0" width="3" height="4" depth="0.1" src="#wallTex" ></a-box>   
+      <a-box position="10 2 0" width="10" height="4" depth="0.1" src="#wallTex" ></a-box>  
+
+      <a-entity id="top-rooms">
+        <a-box position="1 2 -2.5" width="0.1" height="4" depth="5" src="#wallTex" ></a-box>
+        <a-box position="1 2 -6.5" width="0.1" height="4" depth="3" src="#wallTex" ></a-box>
+        <a-box position="4 2 -7.5" width="6" height="4" depth="0.1" src="#wallTex" ></a-box> 
+        <a-box position="7 2 -8.75" width="0.1" height="4" depth="2.5" src="#wallTex" ></a-box>
+      </a-entity>  
+
+      <a-entity id="bottom-rooms">
+        <a-box position="-11 2 2.5" width="0.1" height="4" depth="5" src="#wallTex" ></a-box>
+        <a-box position="-8.5 2 5" width="7.5" height="4" depth="0.1" src="#wallTex" ></a-box>
+        <a-box position="-0.4 2 5" width="2.7" height="4" depth="0.1" src="#wallTex"></a-box> 
+        <a-box position="1 2 6.5" width="0.1" height="4" depth="7" src="#wallTex"></a-box>
+      </a-entity>
+    </a-entity>
+
+    <!-- ================= DOORS ================= -->
+    <a-entity gltf-model="#door"position="-1.4 0 5" rotation="0 0 0" scale="2 0.95 1"></a-entity>
+    <a-entity gltf-model="#door" position="-12.2 0 5" rotation="0 0 0" scale="1.6 0.95 1"></a-entity>
+    <a-entity gltf-model="#door" position="5 0 0" rotation="0 0 0" scale="2 0.95 1"></a-entity>
+    <a-entity gltf-model="#door" position="-1.5 0 0" rotation="0 0 0" scale="1.5 0.95 1"></a-entity>
+    <a-entity gltf-model="#door" position="3 0 10" rotation="0 180 0" scale="2.1 0.95 1"></a-entity>
+    <a-entity gltf-model="#door" position="7 0 -9.9" rotation="0 180 0" scale="2.1 0.95 1"></a-entity>
+    <a-entity gltf-model="#door" position="1 0 -10" rotation="0 90 0" scale="1.3 0.95 1"></a-entity>
+ 
+    <!-- ================= INTERIOR DECORATION ================= -->
+
+    <!-- ===== LIVING ROOM (CENTER FRONT) ===== -->
+    <a-entity id="living-room">
+      <a-entity gltf-model="#light" position="7 4 4" rotation="0 0 0" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#fan" position="7 3.5 6" rotation="0 0 0" scale="1 1 1" animation="property: rotation; to: 0 360 0; loop: true; dur: 2000"></a-entity>
+      <a-entity gltf-model="#couch" position="10 0.2 1.2" rotation="0 90 0" scale="2.2 2 2.5"></a-entity>
+      <a-entity gltf-model="#couch" position="14 0.2 6" rotation="0 0 0" scale="2.2 2 2.5"></a-entity>
+
+
+      <a-entity id="tv-setup" position="1.2 2 6" rotation="0 90 0">
+        <a-entity gltf-model="#tv" scale="1 1 1"></a-entity>
+        <a-video src="#movie-src" width="3.95" height="2.25" position="-0.45 0.4 0.25"></a-video>
+        
+        <a-entity id="tv-audio-source" 
+                  sound="src: #music; autoplay: false; loop: true; positional: true; volume: 2">
+        </a-entity>
+      </a-entity>
+
+      
+      <a-entity gltf-model="#ac" position="14.2 3.2 5" scale="0.003 0.003 0.003" rotation="0 -90 0"></a-entity>
+      <a-entity gltf-model="#man" position="10 0.2 6" rotation="0 -90 0" scale="0.5 0.5 1" animation-mixer="clip: HumanArmature|Man_Clapping"></a-entity>
+    </a-entity>
+
+    <!-- ===== MASTER BEDROOM (TOP LEFT) ===== -->
+    <a-entity id="master-bedroom">
+      <a-entity gltf-model="#light" position="-5.5 4 -4" rotation="0 0 0" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#fan" position="-5.5 3.5 -6" rotation="0 0 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#bed" position="-11.5 0.1 -8" rotation="0 0 0" scale="3 1.5 1.6"></a-entity>
+      <a-entity gltf-model="#wardrobe" position="-5.5 0 -9" rotation="0 0 0" scale="1.5 1.2 1.2"></a-entity>
+      <a-entity gltf-model="#wardrobe" position="-5.5 2 -9" rotation="0 0 0" scale="1.5 1.2 1.2"></a-entity>
+      <a-entity gltf-model="#desk" position="-16 0.1 0" rotation="0 -90 0" scale="1.5 1.5 1.5"></a-entity>
+      <a-entity gltf-model="#bath" position="3 0.1 -8.7" rotation="0 -90 0" scale="0.04 0.1 0.04"></a-entity>
+      <a-entity gltf-model="#drawer" position="-9.1 0 -9.5" rotation="0 0 0" scale="1.5 1.1 0.7"></a-entity>
+      <a-entity gltf-model="#bookcase" position="0.1 0.1 -4" rotation="0 -90 0" scale="2.5 1.1 1.5"></a-entity>
+      <a-entity gltf-model="#alarm" position="-9.5 1.1 -9.6" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#cup" position="-8.8 1 -9.3" scale="0.1 0.1 0.1"></a-entity>
+      <a-entity gltf-model="#ac" position="-9 3.2 -0.3" scale="0.002 0.002 0.002" rotation="0 180 0"></a-entity>
+    </a-entity>
+
+    <!-- ===== KITCHEN & DINING (TOP RIGHT) ===== -->
+    <a-entity id="kitchen-dining">
+      <a-entity gltf-model="#light" position="9.5 4 -7" rotation="0 0 0" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#fan" position="9.5 3.5 -5" rotation="0 0 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#Kitchen" position="13.8 1.21 -5.3" rotation="0 -90 0" scale="5.1 2.5 2.3"></a-entity>
+      <a-entity gltf-model="#fridge" position="4.5 0 -6.8" rotation="0 0 0" scale="1 1 0.7"></a-entity>
+      <a-entity gltf-model="#washing" position="9.5 1.2 -0.8" rotation="0 -120 0" scale="10 10 10"></a-entity>
+      <a-entity gltf-model="#dining" position="-20 0.1 11" scale="0.04 0.04 0.04"></a-entity>
+    </a-entity>
+
+    <!-- ===== GUEST ROOM (BOTTOM LEFT) ===== -->
+    <a-entity id="guest-room">
+      <a-entity gltf-model="#bath" position="-13 0.1 2" rotation="0 0 0" scale="0.068 0.1 0.07"></a-entity>
+      <a-entity gltf-model="#light" position="-9 4 7" rotation="0 0 0" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#fan" position="-7 3.5 7" rotation="0 0 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#bed" position="-14 0.1 8" rotation="0 180 0" scale="2 1.5 1.6"></a-entity>
+      <a-entity gltf-model="#wardrobe" position="-7 1.2 9" rotation="0 180 0" scale="1.5 1.6 1.2"></a-entity>
+      <a-entity gltf-model="#ac" position="0.5 3 7.5" scale="0.002 0.002 0.002" rotation="0 -90 0"></a-entity>
+      <a-entity gltf-model="#tv" position="-8 2 5.2" rotation="0 0 0" scale="0.5 0.5 0.5"></a-entity>          
+    </a-entity>
+
+
+  </a-scene>
+</body>
+</html>
